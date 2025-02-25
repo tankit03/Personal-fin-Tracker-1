@@ -6,8 +6,10 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Transaction from './model/transaction.model.js';
-import productRoutes from './routes/transaction.routes.js';
+import transactionRoute from './routes/transaction.routes.js';
 import userRoutes from './routes/user.routes.js'
+import cookieParser from 'cookie-parser';
+
 
 const app = express();
 
@@ -15,6 +17,8 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cookieParser());
+
 
 // Pulling info from .env
 dotenv.config();
@@ -40,5 +44,5 @@ app.get('/', (req, res) => {
 
 // routes 
 
-app.use("/api/transactions", productRoutes);
+app.use("/api/transactions", transactionRoute);
 app.use("/api/user", userRoutes);

@@ -15,6 +15,10 @@ export const loginUser = async(req, res) => {
     try{
         const user = await User.login(email, password);
         const token = createToken(user._id);
+        res.cookie("token", token, {
+            withCredentials: true,
+            httpOnly: false,
+        });
         res.status(200).json({email, token});
 
     } catch (error) {
@@ -28,10 +32,11 @@ export const signupUser = async(req, res) => {
 
     try {
         const user = await User.signup(email, password);
-
-        // create a token
-
         const token = createToken(user._id);
+        res.cookie("token", token, {
+            withCredentials: true,
+            httpOnly: false,
+        });
 
         res.status(200).json({email, token});
     } catch (error) {

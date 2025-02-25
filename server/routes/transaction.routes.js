@@ -7,12 +7,12 @@ import
     deleteTransactions
 } from '../controllers/transactions.controller.js'
 
-const Router = express.Router();
+const router = express.Router();
 
-Router.get('/', getTransactions);
-Router.get('/:id', getTransaction);
-Router.post('/', postTransactions);
-Router.put('/:id', updateTransactions);
-Router.delete('/:id', deleteTransactions);
+router.get('/', getTransactions);
+router.get('/:id', getTransaction);
+router.post('/', postTransactions);
+router.put('/:id', updateTransactions);
+router.delete('/:id', deleteTransactions);
 
-export default Router;
+export default router;

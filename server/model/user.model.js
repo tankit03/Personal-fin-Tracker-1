@@ -11,7 +11,12 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: new Date()
+
+    },
 });
 
 // Login static method
